@@ -2,28 +2,33 @@ import React from "react"
 import LoginForm from "./components/loginForm";
 import Header from "./Header";
 import MemeGenerator from "./MemeGenerator";
-import { func } from "prop-types";
+import "./App.css";
 
-const userInfo ={
-    userName: 'ThienDuc',
-    password: 'ducdeptrai'
-}
-function App() {
-    var isLoggin = false;
-    if (isLoggin) {
-        return (
-            <div>
-                <Header/>
-                <MemeGenerator/>
-            </div>
-        );
+
+
+
+class App extends React.Component {
+    state = {
+        isAuth: false
     }
-        return (
+
+    handleLoginSuccess = () => {
+        this.setState({isAuth: true});
+    }
+    handleLoginFailed = () => {
+        this.setState({isAuth: false});
+    }
+    render() {
+        const {isAuth} =this.state;
+        return(
             <div>
                 <Header/>
-                <LoginForm/>
+                {isAuth ? <MemeGenerator/> : <LoginForm handleLoginSuccess={this.handleLoginSuccess} 
+                    handleLoginFailed={this.handleLoginFailed}/>}
             </div>
         )
+    }
+
 }
 
 export default App;

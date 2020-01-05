@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
-import { userInfo } from 'os';
-import MemeGenerator from '../MemeGenerator';
 
+const userInfo={
+    userName: 'ThienDuc',
+    password: 'ducdeptrai'
+}
 class LoginForm extends Component {
     state = {
-        account: { username:'',password:'' }
+        account: { username:'',password:'' },
+        errors: {}
+    }
+
+    validate = () => {
+        const errors ={};
+        const { account } = this.state;
+        if (account.usernam.trim()==='')
+            errors.username = 'Username is required.';
+        if (account.password.trim()==='')
+            errors.password = 'Password is required.'
     }
     handleSubmit = e => {
         e.preventDefault();
+        const {username,password} = this.state.account;
+        const {handleLoginSuccess, handleLoginFailed} = this.props;
+        if (userInfo.userName===username && userInfo.password===password){
+            handleLoginSuccess();
+            console.log('Login Successfully');
+        } else {
+            handleLoginFailed();
+            console.log('Login Failed');
+        }
         console.log("Submitted");
     }
     handleChange = ({ currentTarget: input}) =>{
