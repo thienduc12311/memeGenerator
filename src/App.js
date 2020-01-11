@@ -22,7 +22,7 @@ class App extends React.Component {
         const {isAuth} =this.state;
         return(
             <div>
-                <Header/>
+                
                 {isAuth ? <MemeGenerator/> : <LoginForm handleLoginSuccess={this.handleLoginSuccess} 
                     handleLoginFailed={this.handleLoginFailed}/>}
             </div>

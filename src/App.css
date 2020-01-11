@@ -26,3 +26,11 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  img.center {
+    display: block;
+    margin: 0 auto;
+}
+ button.center {
+  display: block;
+  margin: 0 auto;
+}
