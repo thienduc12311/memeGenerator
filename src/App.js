@@ -6,7 +6,9 @@ import "./App.css";
 
 
 
-
+const Haido = () =>{
+    console.log("hihi");
+}
 class App extends React.Component {
     state = {
         isAuth: false
